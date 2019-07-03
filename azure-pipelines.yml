@@ -37,3 +37,12 @@ steps:
     npm install
     npm run prod
   displayName: Building Vue
+
+- task: CopyFilesOverSSH@0
+    inputs:
+      sshEndpoint: 'Mintalgfx'
+      sourceFolder: '$(Agent.BuildDirectory)'
+      contents: '**
+        !node_modules/**'
+      targetFolder: '/subdomains/drs/'
+  displayName: ssh upload

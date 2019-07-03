@@ -35,13 +35,10 @@ steps:
 - script: |
     npm install
     npm run prod
+    rm -rf node_modules/
   displayName: Building Vue
 
-- task: CopyFilesOverSSH@0
+- task: PublishPipelineArtifact@1
   inputs:
-      sshEndpoint: 'Mintalgfx'
-      sourceFolder: '$(Agent.BuildDirectory)'
-      contents: '**
-        !node_modules/**'
-      targetFolder: '/subdomains/drs/'
-  displayName: ssh upload
+    targetPath: '$(Pipeline.Workspace)/s/'
+    artifact: 'droplet'

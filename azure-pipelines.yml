@@ -28,10 +28,12 @@ steps:
 - script: composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
   displayName: 'composer install'
 
-- script: php artisan config:cache
+- script: |
+    php artisan config:cache
+    php artisan route:cache
   displayName: Configuring cache
 
 - script: |
     npm install
-    npm run dev
+    npm run prod
   displayName: Building Vue

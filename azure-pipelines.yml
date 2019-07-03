@@ -39,7 +39,7 @@ steps:
   displayName: Building Vue
 
 - task: CopyFilesOverSSH@0
-    inputs:
+  inputs:
       sshEndpoint: 'Mintalgfx'
       sourceFolder: '$(Agent.BuildDirectory)'
       contents: '**

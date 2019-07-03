@@ -30,7 +30,6 @@ steps:
 
 - script: |
     php artisan config:cache
-    php artisan route:cache
   displayName: Configuring cache
 
 - script: |
